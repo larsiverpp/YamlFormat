@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    <MajorVersion>1</MajorVersion>
+    <MinorVersion>0</MinorVersion>
+    <PatchVersion>0</PatchVersion>
+    <BuildNumber Condition="'$(BuildNumber)' == ''">0</BuildNumber>
+    <Version>$(MajorVersion).$(MinorVersion).$(PatchVersion).0</Version>
+    <FileVersion>$(MajorVersion).$(MinorVersion).$(PatchVersion).$(BuildNumber)</FileVersion>
+    <Authors>Lars Iversen</Authors>
+    <Copyright>Copyright $([System.DateTime]::UtcNow.ToString(yyyy)) (c) Lars Iversen. All rights reserved.</Copyright>
+    <Description>TBD.</Description>
+    <PackAsTool>true</PackAsTool>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>Roslyn;Analyzers;CodeAnalysis</PackageTags>
+    <PackageProjectUrl>https://github.com/larsiverpp/YamlFormat</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageVersion>$(MajorVersion).$(MinorVersion).$(PatchVersion)-beta.1</PackageVersion>
+    <RepositoryUrl>https://github.com/larsiverpp/YamlFormat.git </RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="YamlDotNet" Version="16.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="README.md">
+      <Pack>true</Pack>
+      <PackagePath>\</PackagePath>
+    </Content>
+  </ItemGroup>
+</Project>

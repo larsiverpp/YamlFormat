@@ -1,0 +1,9 @@
+*.user
+.vs
+
+bin
+obj
+
+*.ncrunchproject
+_NCrunch_*
+nCrunchTemp_*
