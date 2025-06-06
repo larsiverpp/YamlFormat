@@ -10,9 +10,12 @@
     <UseSharedCompilation>true</UseSharedCompilation>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
+    <Nullable>enable</Nullable>
     <IsPublishable Condition="'$(IsPublishable)' == ''">false</IsPublishable>
+    <DC1001_NamespacePrefixes>Liversen</DC1001_NamespacePrefixes>
   </PropertyGroup>
   <ItemGroup>
+    <CompilerVisibleProperty Include="DC1001_NamespacePrefixes" />
     <None Include="$(MSBuildThisFileDirectory)\stylecop.json" />
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)\stylecop.json" Link="stylecop.json" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556">
@@ -22,6 +25,9 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="SonarAnalyzer.CSharp" Version="10.10.0.116381">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Liversen.DependencyCop" Version="2.0.0-beta.3">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>

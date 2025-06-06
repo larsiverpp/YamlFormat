@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Liversen.YamlFormat": {
+      "commandName": "Project",
+      "commandLineArgs": "c:\\Users\\bd0762\\git\\X5SC\\DbCorpNet\\azure-pipelines.yml --p"
+    }
+  }
+}

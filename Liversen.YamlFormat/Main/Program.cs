@@ -1,9 +1,12 @@
+using System.CommandLine;
+using System.Threading.Tasks;
+
 namespace Liversen.YamlFormat.Main;
 
 static class Program
 {
-    static int Main(string[] args)
+    static Task<int> Main(string[] args)
     {
-        return 0;
+        return RootCommandFactory.Create(new Handler()).InvokeAsync(args);
     }
 }
