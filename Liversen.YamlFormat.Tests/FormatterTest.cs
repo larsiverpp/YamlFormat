@@ -20,7 +20,7 @@ public static class FormatterTest
     [Fact]
     public static void GivenInputWithExtraSpaces_WhenFormatting_ThenFormattedWithoutExtraSpaces()
     {
-        var x = $"foo:  bar";
+        var x = "foo:  bar";
         var y = $"foo: bar{NewLine}";
 
         Formatter.Format(x).ShouldBe(y);

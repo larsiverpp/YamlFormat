@@ -4,6 +4,6 @@
 bin
 obj
 
-*.ncrunchproject
-_NCrunch_*
+\.NCrunch_*
+*\.ncrunchproject
 nCrunchTemp_*
