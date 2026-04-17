@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Liversen.YamlFormat.Tests/Liversen.YamlFormat.Tests.csproj" />
+  <Project Path="Liversen.YamlFormat/Liversen.YamlFormat.csproj" />
+</Solution>
