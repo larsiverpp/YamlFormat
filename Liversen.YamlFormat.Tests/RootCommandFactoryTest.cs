@@ -29,15 +29,26 @@ public class RootCommandFactoryTest
             PreserveEmptyLinesAndComments: false));
     }
 
-    [Fact(Skip = "Not working")]
-    public async Task GivenCommand_WhenInvokingWithPathAndIndentSequences_ThenPathAndIndentSequencesTrue()
+    [Fact]
+    public async Task GivenCommand_WhenInvokingWitShortOptions_ThenOptionsSet()
     {
-        await sut.InvokeAsync("foobar -i");
+        await sut.InvokeAsync("foobar -i -p");
 
         handler.Arguments.ShouldBe(new(
             Path: "foobar",
             IndentSequences: true,
-            PreserveEmptyLinesAndComments: false));
+            PreserveEmptyLinesAndComments: true));
+    }
+
+    [Fact]
+    public async Task GivenCommand_WhenInvokingWitlongOptions_ThenOptionsSet()
+    {
+        await sut.InvokeAsync("foobar --indentSequences --preserveEmptyLinesAndComments");
+
+        handler.Arguments.ShouldBe(new(
+            Path: "foobar",
+            IndentSequences: true,
+            PreserveEmptyLinesAndComments: true));
     }
 
     sealed class TestHandler : IHandler

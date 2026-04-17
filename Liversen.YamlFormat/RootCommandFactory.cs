@@ -9,8 +9,8 @@ static class RootCommandFactory
     {
         var rootCommand = new RootCommand();
         rootCommand.AddArgument(new Argument<string>("path", "File path"));
-        rootCommand.AddOption(new Option<bool>("-i", () => true, "Indent sequences"));
-        rootCommand.AddOption(new Option<bool>("-p", () => true, "Preserve empty lines and comments"));
+        rootCommand.AddOption(new Option<bool>(["-i", "--indentSequences"], () => false, "Indent sequences"));
+        rootCommand.AddOption(new Option<bool>(["-p", "--preserveEmptyLinesAndComments"], () => false, "Preserve empty lines and comments"));
         rootCommand.Handler = CommandHandler.Create(async (string path, bool indentSequences, bool preserveEmptyLinesAndComments) =>
             await handler.Handle(
                 new(
