@@ -1,9 +1,11 @@
 *.user
-.vs
 
-bin
-obj
+bin/
+obj/
 
-\.NCrunch_*
-*\.ncrunchproject
+*.ncrunchproject
+*.ncrunchsolution
+?NCrunch_*/
 nCrunchTemp_*
+
+.vs/
