@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <OutputType>Exe</OutputType>
@@ -17,13 +17,11 @@
     <Description>TBD.</Description>
     <PackAsTool>true</PackAsTool>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>Roslyn;Analyzers;CodeAnalysis</PackageTags>
     <PackageProjectUrl>https://github.com/larsiverpp/YamlFormat</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageVersion>$(MajorVersion).$(MinorVersion).$(PatchVersion)-beta.1</PackageVersion>
     <RepositoryUrl>https://github.com/larsiverpp/YamlFormat.git </RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="YamlDotNet" Version="17.0.1" />
@@ -36,4 +34,5 @@
       <PackagePath>\</PackagePath>
     </Content>
   </ItemGroup>
+  <Import Project="..\_Development\Project.targets"/>
 </Project>
