@@ -1,5 +1,4 @@
 ﻿using System.CommandLine;
-using System.CommandLine.NamingConventionBinder;
 
 namespace Liversen.YamlFormat;
 
@@ -8,15 +7,31 @@ static class RootCommandFactory
     public static RootCommand Create(IHandler handler)
     {
         var rootCommand = new RootCommand();
-        rootCommand.AddArgument(new Argument<string>("path", "File path"));
-        rootCommand.AddOption(new Option<bool>(["-i", "--indentSequences"], () => false, "Indent sequences"));
-        rootCommand.AddOption(new Option<bool>(["-p", "--preserveEmptyLinesAndComments"], () => false, "Preserve empty lines and comments"));
-        rootCommand.Handler = CommandHandler.Create(async (string path, bool indentSequences, bool preserveEmptyLinesAndComments) =>
+        var pathArgument = new Argument<string>("path")
+        {
+            Description = "File path"
+        };
+        rootCommand.Add(pathArgument);
+        var indentSequencesOption = new Option<bool>("-i", "--indentSequences")
+        {
+            Description = "Indent sequences",
+            DefaultValueFactory = _ => false
+        };
+        rootCommand.Add(indentSequencesOption);
+        var preserveEmptyLinesAndCommentsArgument = new Option<bool>("-p", "--preserveEmptyLinesAndComments")
+        {
+            Description = "Preserve empty lines and comments",
+            DefaultValueFactory = _ => false
+        };
+        rootCommand.Add(preserveEmptyLinesAndCommentsArgument);
+        rootCommand.SetAction(async parseResult =>
+        {
             await handler.Handle(
                 new(
-                    Path: path,
-                    IndentSequences: indentSequences,
-                    PreserveEmptyLinesAndComments: preserveEmptyLinesAndComments)));
+                    Path: parseResult.GetRequiredValue(pathArgument),
+                    IndentSequences: parseResult.GetValue(indentSequencesOption),
+                    PreserveEmptyLinesAndComments: parseResult.GetValue(preserveEmptyLinesAndCommentsArgument)));
+        });
 
         return rootCommand;
     }

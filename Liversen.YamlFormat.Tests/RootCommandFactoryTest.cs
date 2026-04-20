@@ -1,4 +1,5 @@
 ﻿using System.CommandLine;
+using System.Threading;
 using System.Threading.Tasks;
 using Shouldly;
 using Xunit;
@@ -21,7 +22,7 @@ public class RootCommandFactoryTest
     {
         var path = "foobar";
 
-        await sut.InvokeAsync(path);
+        await sut.Parse(path).InvokeAsync(cancellationToken: CancellationToken.None);
 
         handler.Arguments.ShouldBe(new(
             Path: path,
@@ -32,7 +33,7 @@ public class RootCommandFactoryTest
     [Fact]
     public async Task GivenCommand_WhenInvokingWitShortOptions_ThenOptionsSet()
     {
-        await sut.InvokeAsync("foobar -i -p");
+        await sut.Parse("foobar -i -p").InvokeAsync(cancellationToken: CancellationToken.None);
 
         handler.Arguments.ShouldBe(new(
             Path: "foobar",
@@ -43,7 +44,7 @@ public class RootCommandFactoryTest
     [Fact]
     public async Task GivenCommand_WhenInvokingWitlongOptions_ThenOptionsSet()
     {
-        await sut.InvokeAsync("foobar --indentSequences --preserveEmptyLinesAndComments");
+        await sut.Parse("foobar --indentSequences --preserveEmptyLinesAndComments").InvokeAsync(cancellationToken: CancellationToken.None);
 
         handler.Arguments.ShouldBe(new(
             Path: "foobar",

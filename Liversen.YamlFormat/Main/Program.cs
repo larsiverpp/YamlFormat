@@ -3,10 +3,24 @@ using System.Threading.Tasks;
 
 namespace Liversen.YamlFormat.Main;
 
-static class Program
+internal static class Program
 {
-    static Task<int> Main(string[] args)
+    internal static async Task<int> Main(string[] args)
     {
-        return RootCommandFactory.Create(new Handler()).InvokeAsync(args);
+        using var console = new Console();
+        return await MainInner(args, console);
+    }
+
+    internal static async Task<int> MainInner(string[] args, IConsole console)
+    {
+        var rootCommand = RootCommandFactory.Create(new Handler());
+        var parseResult = rootCommand.Parse(args);
+        var invocationConfiguration = new InvocationConfiguration
+        {
+            Output = console.Output,
+            Error = console.Error
+        };
+
+        return await parseResult.InvokeAsync(invocationConfiguration);
     }
 }

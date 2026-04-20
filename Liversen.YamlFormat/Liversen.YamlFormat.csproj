@@ -25,8 +25,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="YamlDotNet" Version="17.0.1" />
-    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
-    <PackageReference Include="System.CommandLine.NamingConventionBinder" Version="2.0.0-beta4.22272.1" />
+    <PackageReference Include="System.CommandLine" Version="2.0.6" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.md">
@@ -34,5 +33,5 @@
       <PackagePath>\</PackagePath>
     </Content>
   </ItemGroup>
-  <Import Project="..\_Development\Project.targets"/>
+  <Import Project="..\_Development\Project.targets" />
 </Project>
